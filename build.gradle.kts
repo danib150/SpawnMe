@@ -1,5 +1,5 @@
 plugins {
-    id("java")
+    java
 }
 
 group = "it.dbruni"
@@ -16,12 +16,17 @@ repositories {
     This is therefore not needed if you're using the full Spigot/CraftBukkit,
     or if you're using the Bukkit API.
     */
+
+    mavenCentral()
     maven("https://oss.sonatype.org/content/repositories/snapshots")
     maven("https://oss.sonatype.org/content/repositories/central")
     // mavenLocal() // This is needed for CraftBukkit and Spigot.
 }
 
+
 dependencies {
+    implementation("ch.jalu:configme:1.3.0")
+
     compileOnly("org.projectlombok:lombok:1.18.28")
     annotationProcessor("org.projectlombok:lombok:1.18.28")
 
@@ -29,6 +34,26 @@ dependencies {
     testAnnotationProcessor("org.projectlombok:lombok:1.18.28")
 
     // Pick only one of these and read the comment in the repositories block.
-    compileOnly("org.spigotmc:spigot-api:1.19.3-R0.1-SNAPSHOT") // The Spigot API with no shadowing. Requires the OSS repo.
-    compileOnly("org.spigotmc:spigot:1.19.3-R0.1-SNAPSHOT") // The full Spigot server with no shadowing. Requires mavenLocal.
+    compileOnly("org.spigotmc:spigot-api:1.20-R0.1-SNAPSHOT") // The Spigot API with no shadowing. Requires the OSS repo.
+}
+
+tasks {
+    javadoc {
+        options.encoding = "UTF-8"
+    }
+    compileJava {
+        options.encoding = "UTF-8"
+    }
+    compileTestJava {
+        options.encoding = "UTF-8"
+    }
+}
+tasks.withType<Jar> {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+
+    configurations["runtimeClasspath"].forEach { file: File ->
+        from(zipTree(file.absoluteFile))
+    }
+
 }
