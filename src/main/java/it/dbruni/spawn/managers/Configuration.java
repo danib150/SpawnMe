@@ -25,9 +25,10 @@ public class Configuration implements SettingsHolder {
     public static Property<Boolean> SPAWN_ON_FIRST_JOIN = PropertyInitializer.newProperty("settings.spawn-on-first-join", true);
 
     @Comment("Spawn coords")
-    public static Property<Integer> CORD_X = PropertyInitializer.newProperty("spawn.x", 0);
-    public static Property<Integer> CORD_Y = PropertyInitializer.newProperty("spawn.y", 0);
-    public static Property<Integer> CORD_Z = PropertyInitializer.newProperty("spawn.z", 0);
-    public static Property<Integer> CORD_PITCH = PropertyInitializer.newProperty("spawn.pitch", 0);
-    public static Property<Integer> CORD_YAW = PropertyInitializer.newProperty("spawn.yaw", 0);
+    public static Property<String> CORDS_WORLD = PropertyInitializer.newProperty("spawn.world", "world");
+    public static Property<Double> CORD_X = PropertyInitializer.newProperty("spawn.x", 0.0);
+    public static Property<Double> CORD_Y = PropertyInitializer.newProperty("spawn.y", 0.0);
+    public static Property<Double> CORD_Z = PropertyInitializer.newProperty("spawn.z", 0.0);
+    public static Property<Double> CORD_PITCH = PropertyInitializer.newProperty("spawn.pitch", 0.0);
+    public static Property<Double> CORD_YAW = PropertyInitializer.newProperty("spawn.yaw", 0.0);
 }

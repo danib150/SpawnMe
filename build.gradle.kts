@@ -9,12 +9,15 @@ repositories {
     maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
     maven("https://oss.sonatype.org/content/repositories/snapshots")
     maven("https://oss.sonatype.org/content/repositories/central")
+    maven(uri("https://nexus.iridiumdevelopment.net/repository/maven-releases/"))
     mavenCentral()
 }
 
 
 dependencies {
     implementation("ch.jalu:configme:1.3.0")
+
+    implementation("com.iridium:IridiumColorAPI:1.0.6")
 
     compileOnly("org.projectlombok:lombok:1.18.28")
     annotationProcessor("org.projectlombok:lombok:1.18.28")
