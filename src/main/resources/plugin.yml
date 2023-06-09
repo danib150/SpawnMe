@@ -1,0 +1,15 @@
+name: SpawnMe
+version: 1.0-SNAPSHOT
+author: dbruni
+main: it.dbruni.spawn.SpawnMe
+commands:
+  spawnme:
+    description: SpawnMe settings
+    permission: spawnme.admin
+    aliases:
+      - iospawn
+  spawn:
+    description: Teleport to spawn
+    permission: spawnme.spawn
+    aliases:
+      - spawntp
