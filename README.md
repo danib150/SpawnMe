@@ -1,2 +1,2 @@
 # SpawnMe
-Spawn management tools for spigot
+ Spawn management spigot plugin
