@@ -6,9 +6,9 @@ import it.dbruni.spawn.commands.SpawnCommand;
 import it.dbruni.spawn.commands.mainCommand.SpawnMeCommand;
 import it.dbruni.spawn.listener.PlayerListener;
 import it.dbruni.spawn.managers.Configuration;
+import it.dbruni.spawn.managers.SpawnManager;
 import lombok.Getter;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -23,14 +23,14 @@ public class SpawnMe extends JavaPlugin {
 
     @Getter private static SpawnMe instance;
     private SettingsManager settingsManager;
-
+    private SpawnManager spawnManager;
     @Override
     public void onEnable() {
         instance = this;
 
-        Bukkit.getLogger().log(Level.FINE, "Enabling " + this.getName() + " version " + this.getDescription().getVersion() + " by " + this.getDescription().getAuthors().get(0));
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Made " + ChatColor.WHITE + "in" + ChatColor.RED + " Italy!");
-        File file = new File(this.getName() + "/" + "config.yml");
+        Bukkit.getLogger().log(Level.FINE, "Enabling " + this.getName() + " version " + this.getDescription().getVersion() + " by " + "dbruni");
+        Bukkit.getConsoleSender().sendMessage("§4Made " + "§fin" + " §cItaly!");
+        File file = new File("plugins" +  "/" + this.getName() + "/" + "config.yml");
         settingsManager = SettingsManagerBuilder
                 .withYamlFile(file)
                 .configurationData(Configuration.class)
@@ -39,8 +39,11 @@ public class SpawnMe extends JavaPlugin {
         PluginManager pluginManager = Bukkit.getPluginManager();
         pluginManager.registerEvents(new PlayerListener(), this);
 
-        getCommand("spawnme").setExecutor(new SpawnCommand());
+        spawnManager = new SpawnManager(settingsManager);
+        spawnManager.updateLocation();
+
         getCommand("spawnme").setExecutor(new SpawnMeCommand());
+        getCommand("spawn").setExecutor(new SpawnCommand());
     }
 
 

@@ -4,8 +4,8 @@ import it.dbruni.spawn.commands.mainCommand.CommandArguments;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
-public class UnknownArg extends CommandArguments {
-    public UnknownArg() {
+public class UnknownArgument extends CommandArguments {
+    public UnknownArgument() {
         super("", 0);
     }
 

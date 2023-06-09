@@ -1,15 +1,18 @@
 package it.dbruni.spawn.managers;
 
 import ch.jalu.configme.SettingsManager;
-import it.dbruni.spawn.SpawnMe;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 
 public class SpawnManager {
 
-    @Getter private Location location = new Location(Bukkit.getWorld("world"), 0,0,0,0,0);
-    SettingsManager settingsManager = SpawnMe.getInstance().getSettingsManager();
+    private final SettingsManager settingsManager;
+    @Getter private static Location location;
+
+    public SpawnManager(SettingsManager settingsManager) {
+        this.settingsManager = settingsManager;
+    }
 
     public void updateLocation() {
         String world = settingsManager.getProperty(Configuration.CORDS_WORLD);
@@ -23,12 +26,7 @@ public class SpawnManager {
     }
 
     public void setLocation(String world, double x, double y, double z, double yaw, double pitch) {
-        location.setWorld(Bukkit.getWorld(world));
-        location.setX(x);
-        location.setY(y);
-        location.setZ(z);
-        location.setYaw((float) yaw);
-        location.setPitch((float) yaw);
+        location = new Location(Bukkit.getWorld(world), x, y, z, (float) yaw, (float) pitch);
     }
 
 }

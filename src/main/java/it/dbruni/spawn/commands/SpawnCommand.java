@@ -22,8 +22,7 @@ public class SpawnCommand implements CommandExecutor {
             return true;
         }
 
-        SpawnManager spawnManager = new SpawnManager();
-        player.teleport(spawnManager.getLocation());
+        player.teleport(SpawnManager.getLocation());
         player.sendMessage(ChatColor.GREEN + "Teleported to spawn!");
 
         return true;

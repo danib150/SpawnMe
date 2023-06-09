@@ -10,8 +10,8 @@ import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class SetSpawn extends CommandArguments {
-    public SetSpawn() {
+public class SetSpawnArgument extends CommandArguments {
+    public SetSpawnArgument() {
         super("setspawn", 1);
     }
 
@@ -21,7 +21,7 @@ public class SetSpawn extends CommandArguments {
             sender.sendMessage(ChatColor.RED + "You must be a player to configure spawn location.");
             return;
         }
-        SpawnManager spawnManager = new SpawnManager();
+        SpawnManager spawnManager = SpawnMe.getInstance().getSpawnManager();
         Location location = player.getLocation();
         double x, y, z, yaw, pitch;
         x = location.getX();

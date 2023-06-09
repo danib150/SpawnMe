@@ -1,9 +1,9 @@
 package it.dbruni.spawn.commands.mainCommand;
 
 import it.dbruni.spawn.commands.mainCommand.subCommands.HelpArgument;
-import it.dbruni.spawn.commands.mainCommand.subCommands.ReloadConfiguration;
-import it.dbruni.spawn.commands.mainCommand.subCommands.SetSpawn;
-import it.dbruni.spawn.commands.mainCommand.subCommands.UnknownArg;
+import it.dbruni.spawn.commands.mainCommand.subCommands.ReloadArgument;
+import it.dbruni.spawn.commands.mainCommand.subCommands.SetSpawnArgument;
+import it.dbruni.spawn.commands.mainCommand.subCommands.UnknownArgument;
 import it.dbruni.spawn.managers.SenderUtils;
 import lombok.Setter;
 import org.bukkit.Bukkit;
@@ -25,12 +25,12 @@ public class SpawnMeCommand implements CommandExecutor {
         Bukkit.getPluginCommand("spawnme").setExecutor(this);
 
         arguments = new ArrayList<>();
-        unknownArgument = new UnknownArg();
+        unknownArgument = new UnknownArgument();
 
-        registerArgument(new SetSpawn());
+        registerArgument(new SetSpawnArgument());
 
         registerArgument(new HelpArgument());
-        registerArgument(new ReloadConfiguration());
+        registerArgument(new ReloadArgument());
     }
 
     public void registerArgument(CommandArguments argument) {
